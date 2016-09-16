@@ -14,7 +14,7 @@ module.exports = (env) ->
         createCallback: (config) => new WmiSensor(config)
       })    
 
-
+  plugin = new WMI
       
   class WmiSensor extends env.devices.Sensor   
 
@@ -23,22 +23,19 @@ module.exports = (env) ->
         type: "string"
         description: "wmi fetched values"
 
-
     constructor: (@config) ->
       @id = @config.id
       @name = @config.name   
+      @command = @config.command
       @wmi = new wmiClient({ 
         username: @config.username,
         password: @config.password,
         host: @config.host
       })
       Promise.promisifyAll @wmi
+      if plugin.config.debug
+        env.logger.debug @wmi 
 
-      #console.log @wmi #Debugging
-
-      @command = @config.command
-
-      #Interval for pulling data
       setInterval( ( => 
         @getValue()
       ), @config.interval)
@@ -50,11 +47,11 @@ module.exports = (env) ->
 
     getValue: () ->
       @wmi.queryAsync(@command).then((results) ->
-          console.log results #Debugging
+          if plugin.config.debug 
+            env.logger.debug results 
           JSON.stringify results
       ).catch( (err) ->
         env.logger.error err
       )
     
-  myWMI = new WMI
-  return myWMI
+  return plugin

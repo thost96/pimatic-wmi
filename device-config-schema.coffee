@@ -19,5 +19,5 @@ module.exports = {
         interval:
           description: "interval"
           type: "number"
-          default: 6000
+          default: 60000
 }

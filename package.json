@@ -6,9 +6,10 @@
     "wmi.coffee",
     "README.md",
     "wmi-config-schema.coffee",
+    "device-config-schema.coffee",
     "LICENSE"
   ],
-  "version": "0.0.1",
+  "version": "0.1.1",
   "license": "GPL-2.0",
   "homepage": "http://github.com/thost96/",
   "repository": {
