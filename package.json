@@ -5,11 +5,12 @@
   "files": [
     "wmi.coffee",
     "README.md",
+    "HISTORY.md",
     "wmi-config-schema.coffee",
     "device-config-schema.coffee",
     "LICENSE"
   ],
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "GPL-2.0",
   "homepage": "http://github.com/thost96/",
   "repository": {
