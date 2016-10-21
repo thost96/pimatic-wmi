@@ -1,0 +1,31 @@
+{ "name": "pimatic-wmi",
+  "description": "Read WMI data from Windows Hosts",
+  "author": "Thorsten Reichelt (thost96) <info@thorstenreichelt.de>",
+  "main": "wmi",
+  "files": [
+    "wmi.coffee",
+    "README.md",
+    "HISTORY.md",
+    "wmi-config-schema.coffee",
+    "device-config-schema.coffee",
+    "LICENSE"
+  ],
+  "version": "0.1.2",
+  "license": "GPL-2.0",
+  "homepage": "http://github.com/thost96/",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/thost96/pimatic-wmi.git"
+  },
+  "configSchema": "wmi-config-schema.coffee",
+  "dependencies": {
+    "wmi-client": "0.2.0"
+  },
+  "peerDependencies": {
+    "pimatic": ">=0.8.0 <1.0.0"
+  },
+  "engines": {
+    "node": ">0.8.x",
+    "npm": ">1.1.x"
+  }
+}
