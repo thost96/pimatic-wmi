@@ -1,5 +1,10 @@
 # Release History
 
+* 20161022, v0.1.3
+	* added lodash
+	* added capitalizeFirstLetter function
+	* added addGetter function
+
 * 20161021, v0.1.2
 	* Added HISTORY.md
 	* Updated README.md
