@@ -1,6 +1,7 @@
 # pimatic-wmi
 
 [![npm version](https://badge.fury.io/js/pimatic-wmi.svg)](http://badge.fury.io/js/pimatic-wmi)
+[![dependencies status](https://david-dm.org/thost96/pimatic-wmi/status.svg)](https://david-dm.org/thost96/pimatic-wmi)
 
 A pimatic plugin to query windows hosts using windows management instrumentation.
 
@@ -47,7 +48,7 @@ The WmiSensor displays the output of your specified command to the gui.
 
 # History
 
-See [Release History](https://github.com/thost96/pimatic-wmi/blob/master/HISTORY.md).
+See [Release History](https://github.com/thost96/pimatic-wmi/blob/master/History.md).
 
 # License 
 

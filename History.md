@@ -1,5 +1,10 @@
 # Release History
 
+* 20161022, v0.1.4
+	* fixed History.md link issue
+	* updated README.md
+	* added function for dynamicly building attributes
+
 * 20161022, v0.1.3
 	* added lodash
 	* added capitalizeFirstLetter function
