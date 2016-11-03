@@ -36,13 +36,14 @@ module.exports = (env) ->
       if plugin.config.debug
         env.logger.debug @wmi 
 
-      setInterval( ( => 
+      @timerId = setInterval( ( =>
         @getValue()
       ), @config.interval)
       
       super(@config)  
       
     destroy: () ->
+      clearInterval @timerId if @timerId?
       super()
 
     getValue: () ->
