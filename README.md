@@ -17,11 +17,10 @@ The plugin has the following configuration properties:
 | debug             | false    | Boolean | Debug mode. Writes debug messages to the pimatic log, if set to true |
 
 
-
-##Device Configuration
+## Device Configuration
 The following device can be used:
 
-### WmiSensor
+#### WmiSensor
 The WmiSensor displays the output of your specified command to the gui. 
 
 	{
@@ -41,16 +40,18 @@ The WmiSensor displays the output of your specified command to the gui.
 | password 			| - 	   | String  | Password for the user specified |
 | command 			| - 	   | String  | Command which will be executed.  |
 | interval 			| 60000    | Number  | The time interval in miliseconds at which the comand is queried |
+| attributes		| -		   | Object  | Attributes are automatical saved to config for later support for rules | 
 
-# ToDo
+## ToDo
 
-* Create Attributes dynamicly from command response for easier usability in rules etc.
+* Add auto discovery functions for windows hosts
+* Add support for rules
 
-# History
+## History
 
 See [Release History](https://github.com/thost96/pimatic-wmi/blob/master/History.md).
 
-# License 
+## License 
 
 Copyright (c) 2016, Thorsten Reichelt. All rights reserved.
 

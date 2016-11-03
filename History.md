@@ -1,5 +1,11 @@
 # Release History
 
+* 20161103, v0.1.5
+	* Updated README.md
+	* Fixed function for dynamicly building attributes
+	* Added attributes to device config schema	
+	* Removed EventEmitter and reqiurements	
+
 * 20161022, v0.1.4
 	* fixed History.md link issue
 	* updated README.md

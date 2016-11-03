@@ -20,4 +20,7 @@ module.exports = {
           description: "interval"
           type: "number"
           default: 60000
+        attributes:
+          description: "attributes"
+          type: "object"
 }
