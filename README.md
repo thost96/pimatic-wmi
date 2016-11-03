@@ -29,21 +29,21 @@ The WmiSensor displays the output of your specified command to the gui.
 			"name": "WMI Sensor",
 			"host": "",			
 			"username": "",
-			"password": ""
+			"password": "",
 			"command": ""
 	}
 
 | Property          | Default  | Type    | Description                                 |
 |:------------------|:---------|:--------|:--------------------------------------------|
-| host              | -        | String  | Hostname or IP address of the Windos Host|
-| username 			| - 	   | String  | local or domain user with administrative privilegs|
+| host              | -        | String  | Hostname or IP address of the Windows Host |
+| username 			| - 	   | String  | local or domain user with administrative privileges |
 | password 			| - 	   | String  | Password for the user specified |
-| command 			| - 	   | String  | Command which will be executed.  |
-| interval 			| 60000    | Number  | The time interval in miliseconds at which the comand is queried |
+| command 			| - 	   | String  | Command which will be executed  |
+| interval 			| 60000    | Number  | The time interval in milliseconds at which the command is queried |
 
 # ToDo
 
-* Create Attributes dynamicly from command response for easier usability in rules etc.
+* Create Attributes dynamically from command response for easier usability in rules etc.
 
 # History
 
