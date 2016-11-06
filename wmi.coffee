@@ -34,6 +34,8 @@ module.exports = (env) ->
       @name = @config.name  
       @debug = @plugin.config.debug 
       @command = @config.command
+      # mwittig: This is to keep track of all interval timers. we need to remove them on destruction
+      @timers = []
       ###
       #WMI Object 
       #param @config.username = destination admin user (local or domain(no domain prefix / suffix required))
@@ -49,34 +51,43 @@ module.exports = (env) ->
       if @debug
         env.logger.debug @wmi 
 
-      if !_.isEmpty(@config.attributes)
+      if not _.isEmpty(@config.attributes)
         @attributes = @config.attributes
-        for attrName, object of @config.attributes
-          @_createGetter(attrName, () => 
-            Promise.resolve @attributes[attrName].value
-          ) 
-          setInterval(
-            ( =>
-              @readWmiData(attrName)
-              @['get' + (capitalizeFirstLetter attrName)]()
-            ), @config.interval
-          )     
+        # mittig: added 'own' keyword to for loop, removed 'object' as unused
+        for own attrName of @config.attributes
+          # mwittig: need closure here as attrName is used in async function below (setInterval)
+          do (attrName) =>
+            @_createGetter(attrName, () =>
+              # mwittig: added error handling to the getter function
+              if @attributes[attrName]?
+                if @attributes[attrName].value?
+                  Promise.resolve @attributes[attrName].value
+                else
+                  Promise.reject "Invalid value for attribute: #{attrName}"
+              else
+                Promise.reject "No such attribute: #{attrName}"
+            )
+            #mwittig: push setInterval result to timers to be able to clearTimers on destruction
+            @timers.push setInterval(
+              ( =>
+                @readWmiData(attrName)
+                @['get' + (capitalizeFirstLetter attrName)]()
+              ), @config.interval
+            )
       else
-        debug = @debug
-        attributes = @attributes
-        config = @config
-        framework = @framework
-        deviceobj = @
-        
-        @wmi.queryAsync(@command).then((results) ->
+        # mwittig: bind queryAsync to this: =>. this way you don't need  the holder variables which I removed
+        @wmi.queryAsync(@command).then((results) =>
+          # mwittig: need to check for empty result here - we will loop forever otherwise
+          if results.length > 0
             results = results[0]
-            if debug
+            if @debug
               env.logger.debug JSON.stringify(results) 
             
-            @attr = _.cloneDeep(attributes)          
-            for attrName, value of results 
+            @attr = _.cloneDeep(@attributes)
+            # mittig: added 'own' keyword
+            for own attrName, value of results
               type = null
-              if _.isNumber(value) 
+              if _.isNumber(value)
                 type = "number"
               else if _.isBoolean(value)
                 type = "boolean"
@@ -85,34 +96,41 @@ module.exports = (env) ->
               else
                 type = "string"
 
+              # mwittig: added acronym to have label on display
               @attr[attrName] = {
                 type: type
-                description: attrName 
+                description: attrName
                 value: value
+                acronym: attrName
               }
-            if debug
+            if @debug
               env.logger.debug @attr
-            
-            config.attributes = @attr
-            framework.deviceManager.recreateDevice(deviceobj, config)
+
+            @config.attributes = @attr
+            @framework.deviceManager.recreateDevice(@, @config)
+          else
+            env.logger.error "empty result for wmi query #{@command}"
         )
           
       super(@config, @plugin, @framework)  
       
     destroy: () ->
+      # clear timers
+      for timerId in @timers
+        clearInterval timerId
       super()
 
-    readWmiData: (attrName) =>
-      command = @command
-      debug = @debug
-      attributes = @attributes
-      config = @config
-      @wmi.queryAsync(command).then( (results) ->
-        if debug
+    readWmiData: (attrName) ->
+    # mwittig: bind queryAsync to this: =>. this way you don't need  the holder variable which I removed
+    @wmi.queryAsync(@command).then( (results) =>
+        if @debug
           env.logger.debug attrName + ' : ' + results[0][attrName]
-        attributes[attrName].value = results[0][attrName]
-        config.attributes[attrName].value = results[0][attrName]
-        Promise.resolve attributes[attrName].value
+        # emit attribute change event
+        if @config.attributes[attrName].value isnt results[0][attrName] or not @config.attributes[attrName].discrete
+          @emit attrName, results[0][attrName]
+        @attributes[attrName].value = results[0][attrName]
+        @config.attributes[attrName].value = results[0][attrName]
+        Promise.resolve @attributes[attrName].value
       )
 
   return new WMI
