@@ -121,8 +121,8 @@ module.exports = (env) ->
       super()
 
     readWmiData: (attrName) ->
-    # mwittig: bind queryAsync to this: =>. this way you don't need  the holder variable which I removed
-    @wmi.queryAsync(@command).then( (results) =>
+      # mwittig: bind queryAsync to this: =>. this way you don't need  the holder variable which I removed
+      @wmi.queryAsync(@command).then( (results) =>
         if @debug
           env.logger.debug attrName + ' : ' + results[0][attrName]
         # emit attribute change event

@@ -1,5 +1,11 @@
 # Release History
 
+* 20161106, v0.1.6
+	* Fixed recreate loop [#2](https://github.com/thost96/pimatic-wmi/pull/2) (thanks to mwittig)
+	* Fixed typos in README.md [#1](https://github.com/thost96/pimatic-wmi/pull/1) (thanks to mwittig)
+	* Updated ToDo section in README.md 
+	* Added hint for manual remove of attributes, if command is changed after device creation
+
 * 20161103, v0.1.5
 	* Updated README.md
 	* Fixed function for dynamicly building attributes

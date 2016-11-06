@@ -29,23 +29,26 @@ The WmiSensor displays the output of your specified command to the gui.
 			"name": "WMI Sensor",
 			"host": "",			
 			"username": "",
-			"password": ""
+			"password": "",
 			"command": ""
 	}
 
 | Property          | Default  | Type    | Description                                 |
 |:------------------|:---------|:--------|:--------------------------------------------|
-| host              | -        | String  | Hostname or IP address of the Windos Host|
-| username 			| - 	   | String  | local or domain user with administrative privilegs|
+| host              | -        | String  | Hostname or IP address of the Windows Host|
+| username 			| - 	   | String  | local or domain user with administrative privileges |
 | password 			| - 	   | String  | Password for the user specified |
 | command 			| - 	   | String  | Command which will be executed.  |
-| interval 			| 60000    | Number  | The time interval in miliseconds at which the comand is queried |
+| interval 			| 60000    | Number  | The time interval in milliseconds  at which the command is queried |
 | attributes		| -		   | Object  | Attributes are automatical saved to config for later support for rules | 
+
+If you already created a WmiSensor device and you change the command later, all attributes from this device need to be deleted, before the new attributes are shown. 
 
 ## ToDo
 
 * Add auto discovery functions for windows hosts
 * Add support for rules
+* Add automatic clearing of attributes if command was changed
 
 ## History
 
@@ -53,6 +56,6 @@ See [Release History](https://github.com/thost96/pimatic-wmi/blob/master/History
 
 ## License 
 
-Copyright (c) 2016, Thorsten Reichelt. All rights reserved.
+Copyright (c) 2016, Thorsten Reichelt and contributors. All rights reserved.
 
 License: [GPL-2.0](https://github.com/thost96/pimatic-wmi/blob/master/LICENSE).
