@@ -10,7 +10,7 @@
     "device-config-schema.coffee",
     "LICENSE"
   ],
-  "version": "0.1.2",
+  "version": "0.1.6",
   "license": "GPL-2.0",
   "homepage": "http://github.com/thost96/",
   "repository": {

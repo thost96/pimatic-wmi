@@ -1,6 +1,7 @@
 # pimatic-wmi
 
 [![npm version](https://badge.fury.io/js/pimatic-wmi.svg)](http://badge.fury.io/js/pimatic-wmi)
+[![dependencies status](https://david-dm.org/thost96/pimatic-wmi/status.svg)](https://david-dm.org/thost96/pimatic-wmi)
 
 A pimatic plugin to query windows hosts using windows management instrumentation.
 
@@ -16,11 +17,10 @@ The plugin has the following configuration properties:
 | debug             | false    | Boolean | Debug mode. Writes debug messages to the pimatic log, if set to true |
 
 
-
-##Device Configuration
+## Device Configuration
 The following device can be used:
 
-### WmiSensor
+#### WmiSensor
 The WmiSensor displays the output of your specified command to the gui. 
 
 	{
@@ -29,28 +29,33 @@ The WmiSensor displays the output of your specified command to the gui.
 			"name": "WMI Sensor",
 			"host": "",			
 			"username": "",
-			"password": ""
+			"password": "",
 			"command": ""
 	}
 
 | Property          | Default  | Type    | Description                                 |
 |:------------------|:---------|:--------|:--------------------------------------------|
-| host              | -        | String  | Hostname or IP address of the Windos Host|
-| username 			| - 	   | String  | local or domain user with administrative privilegs|
+| host              | -        | String  | Hostname or IP address of the Windows Host|
+| username 			| - 	   | String  | local or domain user with administrative privileges |
 | password 			| - 	   | String  | Password for the user specified |
 | command 			| - 	   | String  | Command which will be executed.  |
-| interval 			| 60000    | Number  | The time interval in miliseconds at which the comand is queried |
+| interval 			| 60000    | Number  | The time interval in milliseconds  at which the command is queried |
+| attributes		| -		   | Object  | Attributes are automatical saved to config for later support for rules | 
 
-# ToDo
+If you already created a WmiSensor device and you change the command later, all attributes from this device need to be deleted, before the new attributes are shown. 
 
-* Create Attributes dynamicly from command response for easier usability in rules etc.
+## ToDo
 
-# History
+* Add auto discovery functions for windows hosts
+* Add support for rules
+* Add automatic clearing of attributes if command was changed
 
-See [Release History](https://github.com/thost96/pimatic-wmi/blob/master/HISTORY.md).
+## History
 
-# License 
+See [Release History](https://github.com/thost96/pimatic-wmi/blob/master/History.md).
 
-Copyright (c) 2016, Thorsten Reichelt. All rights reserved.
+## License 
+
+Copyright (c) 2016, Thorsten Reichelt and contributors. All rights reserved.
 
 License: [GPL-2.0](https://github.com/thost96/pimatic-wmi/blob/master/LICENSE).
