@@ -42,7 +42,13 @@ The WmiSensor displays the output of your specified command to the gui.
 | interval 			| 60000    | Number  | The time interval in milliseconds  at which the command is queried |
 | attributes		| -		   | Object  | Attributes are automatical saved to config for later support for rules | 
 
-If you already created a WmiSensor device and you change the command later, all attributes from this device need to be deleted, before the new attributes are shown. 
+If you already created a WmiSensor device and you change the command later, all attributes from this device need to be deleted, before the new attributes are shown!
+
+If you running pimatic on windows and want to query the local machine, you need to leave the username and password fields empty!
+
+## Examples
+
+For Examples see [WMI Queries](https://github.com/thost96/pimatic-wmi/blob/master/Examples.md).
 
 ## ToDo
 

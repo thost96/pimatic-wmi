@@ -1,5 +1,9 @@
 # Release History
 
+* 20161108, v0.1.7
+	* Added Example.md with wmi queries examples and references
+	* Updated README.md
+
 * 20161106, v0.1.6
 	* Fixed recreate loop [#2](https://github.com/thost96/pimatic-wmi/pull/2) (thanks to mwittig)
 	* Fixed typos in README.md [#1](https://github.com/thost96/pimatic-wmi/pull/1) (thanks to mwittig)
