@@ -52,8 +52,6 @@ For Examples see [WMI Queries](https://github.com/thost96/pimatic-wmi/blob/maste
 
 ## ToDo
 
-* Add auto discovery functions for windows hosts
-* Add support for rules
 * Add automatic clearing of attributes if command was changed
 
 ## History
