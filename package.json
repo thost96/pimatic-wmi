@@ -20,7 +20,7 @@
   },
   "configSchema": "wmi-config-schema.coffee",
   "dependencies": {
-    "wmi-client": "0.2.0"
+    "wmi-client": "0.5.0"
   },
   "peerDependencies": {
     "pimatic": ">=0.8.0 <1.0.0"
