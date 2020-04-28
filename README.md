@@ -61,6 +61,6 @@ See [Release History](https://github.com/thost96/pimatic-wmi/blob/master/History
 
 ## License 
 
-Copyright (c) 2016, Thorsten Reichelt and contributors. All rights reserved.
+Copyright (c) thost96 and contributors. All rights reserved.
 
 License: [GPL-2.0](https://github.com/thost96/pimatic-wmi/blob/master/LICENSE).
