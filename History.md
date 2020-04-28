@@ -1,5 +1,10 @@
 # Release History
 
+* 20200428, v0.1.8
+	* extended travis ci builds
+	* added github actions for automated publish to npm
+	* updated readme
+
 * 20161108, v0.1.7
 	* Added Example.md with wmi queries examples and references
 	* Updated README.md
